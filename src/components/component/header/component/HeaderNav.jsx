@@ -91,7 +91,7 @@ function HeaderNav() {
       return true;
     } else if (name == "Home" && location.pathname == "/") {
       return true;
-    } else if (name == "Login" && location.pathname == "login") {
+    } else if (name == "Login" && location.pathname.endsWith("login")) {
       return true;
     } else if (name == "Register" && location.pathname.endsWith("register")) {
       return true;

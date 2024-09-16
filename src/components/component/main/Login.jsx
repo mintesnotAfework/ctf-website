@@ -30,6 +30,7 @@ function Login() {
         navigator(routes.App.quests);
     }
     setError(localError);
+    console.log(localError);
   }
   return (
     <>
@@ -50,13 +51,13 @@ function Login() {
                       onChange={(e) => setUsername(e.target.value)}
                       type="text"
                       className="form-control"
-                      id="team_name"
-                      placeholder="Team name"
+                      id="username"
+                      placeholder="Username"
                       value={username}
                     />
-                    <small id="passHelp" className="form-text text-muted">
+                    <div className="form-text text-danger">
                         {error.username}
-                    </small>
+                    </div>
                     </div>
                   <div className="form-group">
                     <input
@@ -67,9 +68,9 @@ function Login() {
                       placeholder="Password"
                       value={password}
                     />
-                    <small id="passHelp" className="form-text text-muted">
-                    {error.password}
-                    </small>
+                    <div className="form-text text-danger">
+                        {error.password}
+                    </div>
                   </div>
                 </div>
               </div>

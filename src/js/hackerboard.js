@@ -1,4 +1,4 @@
-function hackdemodata(){
+export const  hackdemodata = () =>{
 
         var s1 = {
             label: 'ashawe',

@@ -1,7 +1,34 @@
-import { useEffect } from "react"
-
+import { useEffect, useState } from "react"
+import {hackerRank} from '../../../api/app'
 
 function Hackerboard(){
+
+    const [data,setData] = useState(null);
+    
+    useEffect(() => {
+        setData(hackerRank());
+    },[])
+
+    function check(){
+        if(data !== null){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    function ToTimeConvertor(time){
+        let hour = Math.floor(time / 3600);
+        time = time % 3600;
+        let minute = Math.floor(time / 60);
+        let second = time % 60;
+        hour = hour >= 10 ? hour : "0" + hour;
+        minute = minute >= 10 ? minute : "0" + minute;
+        second = second >= 10 ? second : "0" + second;
+        return hour + ":" + minute + ":" + second
+        
+    }
 
     return (
         <>
@@ -33,34 +60,17 @@ function Hackerboard(){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>liveoverflow</td>
-                                        <td>8</td>
-                                        <td>42:59</td>
-                                        <td>2540</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>CR007</td>
-                                        <td>6</td>
-                                        <td>44:59</td>
-                                        <td>1900</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>anonymous</td>
-                                        <td>4</td>
-                                        <td>40:00</td>
-                                        <td>650</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>ashawe</td>
-                                        <td>5</td>
-                                        <td>40:10</td>
-                                        <td>550</td>
-                                    </tr>
+                                    {check()?Object.keys(data).map((key) => {
+                                        return (
+                                            <tr id={key}>
+                                                <th scope="row">{key}</th>
+                                                <td>{data[key].name}</td>
+                                                <td>{data[key].solvedChallange}</td>
+                                                <td>{ToTimeConvertor(data[key].timeTake)}</td>
+                                                <td>{data[key].score}</td>
+                                            </tr>
+                                        )
+                                    }):""}
                                 </tbody>
                             </table>
                         </div>
