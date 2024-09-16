@@ -5,25 +5,25 @@ function Hackerboard(){
 
     return (
         <>
-            <div class="jumbotron bg-transparent mb-0 pt-3 radius-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <h1 class="display-1 bold color_white content__title text-center"><span class="color_danger">HACKER</span>BOARD<span class="vim-caret">&nbsp;</span></h1>
-                            <p class="text-grey lead text-spacey text-center hackerFont">
+            <div className="jumbotron bg-transparent mb-0 pt-3 radius-0">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-12">
+                            <h1 className="display-1 bold color_white content__title text-center"><span className="color_danger">HACKER</span>BOARD<span className="vim-caret">&nbsp;</span></h1>
+                            <p className="text-grey lead text-spacey text-center hackerFont">
                                 Where the world get's ranked!
                             </p>
-                            <div class="row justify-content-center my-5">
-                                <div class="col-xl-10">
+                            <div className="row justify-content-center my-5">
+                                <div className="col-xl-10">
                                     <canvas id="myChart"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-5  justify-content-center">
-                        <div class="col-xl-10">
-                            <table class="table table-hover table-striped">
-                                <thead class="thead-dark hackerFont">
+                    <div className="row mt-5  justify-content-center">
+                        <div className="col-xl-10">
+                            <table className="table table-hover table-striped">
+                                <thead className="thead-dark hackerFont">
                                     <tr>
                                         <th>#</th>
                                         <th>Team Name</th>

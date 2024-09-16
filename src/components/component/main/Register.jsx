@@ -32,7 +32,7 @@ function Register(){
                     </div>
                     <div className="row">
                         <div className="col-xl-12">
-                            <button className="btn btn-outline-danger btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left typewriter" onclick="window.location.href='login.html';">
+                            <button className="btn btn-outline-danger btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left typewriter">
                                     <h4>Register</h4>
                             </button>
                             <small id="registerHelp" className="mt-2 form-text text-muted">Already Registered? <a href="login.html">Login here</a></small>
