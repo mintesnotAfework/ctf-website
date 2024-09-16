@@ -36,7 +36,7 @@ function Instruction(){
                                     </h5>
                                     <ul>
                                         {check()?Object.keys(data.rules.general).map((key) => {
-                                            <li id={key}>{data.rules.general[key]}</li>
+                                            return <li id={key}>{data.rules.general[key]}</li>
                                         }):""}
                                     </ul>
                                     <h5 className="bold color_white pt-3">
@@ -44,7 +44,7 @@ function Instruction(){
                                     </h5>
                                     <ul>
                                     {check()?Object.keys(data.rules.special).map((key) => {
-                                            <li id={key}>{data.rules.special[key]}</li>
+                                            return <li id={key}>{data.rules.special[key]}</li>
                                         }):""}
                                     </ul>
                                     <div className="row text-center pt-5">

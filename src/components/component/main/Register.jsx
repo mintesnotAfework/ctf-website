@@ -1,4 +1,55 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../../js/setting";
+import { register } from "../../../api/auth";
+import { setAuth } from "../../../js/setting";
+
+
 function Register(){
+    const navigator = useNavigate();
+    const [username,setUsername] = useState("");
+    const [password,setPassword] = useState("");
+    const [confirmPassword,setConfirmPassword] = useState("");
+    const [checked,setChecked] = useState(false);
+    const [id,setId] = useState("");
+
+    const [error,setError] = useState({username: "", password : "",checked : ""});
+
+    function validate(e) {
+        const localError = { username: "", password: "" ,checked : ""};
+        e.preventDefault();
+    
+        if (username.trim().length == 0) {
+          localError.username = "The username length can not be zero";
+        }
+        else if (password.trim().length == 0) {
+            localError.password = "The password length can not be zero";
+          }
+         else if (username.trim().length < 3) {
+          localError.username = "Username minmum Length 3";
+        } 
+        else if(password.length < 8){
+            localError.password ="Password minnum Length 8"
+        }
+        else if(password !== confirmPassword){
+            localError.password = "password does not match"
+        }
+        else if(!checked){
+            localError.checked = "Check the box"
+        }
+        else if (register({ id:id, username: username, password: password })) {
+            setUsername("");
+            setPassword("");
+            setId("");
+            setConfirmPassword("");
+            setChecked(false);
+            setAuth(true);
+            navigator(routes.App.quests);
+        }
+        setError(localError);
+      }
+
+
     return (
         <>
             <div className="jumbotron bg-transparent mb-0 pt-3 radius-0">
@@ -12,19 +63,31 @@ function Register(){
                             <div className="row  hackerFont">
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <input type="text" className="form-control" id="reciept_id" placeholder="RecieptId(ex. EINC-5e5a93e4318db)" />
-                                        <small id="reciept_id_help" className="form-text text-muted">Don't have reciept id? Register <a target="_blank" href="http://pictinc.org/subevents_register/online/index1.php">here</a></small>
+                                        <input onChange={(e) => setId(e.target.value)} type="text" className="form-control" id="reciept_id" placeholder="RecieptId(ex. EINC-5e5a93e4318db)" value={id}/>
+                                        <small id="reciept_id_help" className="form-text text-muted">Don't have reciept id? Register <a  href="#">here</a></small>
                                     </div>
                                     <div className="form-group">
-                                        <input type="text" className="form-control" id="team_name" placeholder="Team name" />
+                                        <input  onChange={(e) => setUsername(e.target.value)}  type="text" className="form-control" id="team_name" placeholder="Team name" value={username}/>
+                                        <small id="passHelp" className="form-text text-muted">
+                                            {error.username}
+                                        </small>
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" className="form-control" id="password" placeholder="New Password" /> 
+                                        <input onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" id="password" placeholder="New Password" value={password}/> 
+                                    </div>
+                                    <div className="form-group">
+                                        <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" className="form-control" id="confirm_password" placeholder="Confirm Password" value={confirmPassword}/> 
+                                        <small id="passHelp" className="form-text text-muted">
+                                            {error.password}
+                                        </small>
                                         <small id="passHelp" className="form-text text-muted">Make sure nobody's behind you</small>
                                     </div>
                                     <div className="custom-control custom-checkbox my-4">
-                                        <input type="checkbox" className="custom-control-input" id="solemnly-swear" />
+                                        <input onClick={() => setChecked(!checked)}type="checkbox" className="custom-control-input" id="solemnly-swear" checked={checked}/>
                                         <label className="custom-control-label" for="solemnly-swear">I solemnly swear that I am up to no good.</label>
+                                        <small id="passHelp" className="form-text text-muted">
+                                            {error.checked}
+                                        </small>
                                     </div>
                                 </div>
                             </div>
@@ -32,10 +95,10 @@ function Register(){
                     </div>
                     <div className="row">
                         <div className="col-xl-12">
-                            <button className="btn btn-outline-danger btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left typewriter">
+                            <button onClick={(e) => validate(e)} className="btn btn-outline-danger btn-shadow px-3 my-2 ml-0 ml-sm-1 text-left typewriter">
                                     <h4>Register</h4>
                             </button>
-                            <small id="registerHelp" className="mt-2 form-text text-muted">Already Registered? <a href="login.html">Login here</a></small>
+                            <small id="registerHelp" className="mt-2 form-text text-muted">Already Registered? <a href="#" onClick={() => navigator(routes.Authentication.login)}>Login here</a></small>
                         </div>
                     </div>
                 </div>

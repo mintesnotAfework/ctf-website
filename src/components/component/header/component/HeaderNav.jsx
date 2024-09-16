@@ -1,29 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-
+import { routes,getAuth, setAuth } from "../../../../js/setting";
 
 function HeaderNav() {
   const location = useLocation();
   const navigator = useNavigate();
   const [authenticated, setAuthenticated] = useState(false);
 
+  useEffect(() => {
+    setAuthenticated(getAuth);
+  },[]);
+
   function navigate(event) {
     if (event.target.textContent == "Home") {
-      navigator("/");
+      navigator(routes.index);
     } else if (event.target.textContent == "About") {
-      navigator("/information/about");
+      navigator(routes.Information.about);
     } else if (event.target.textContent == "Hackerboard") {
-      navigator("/app/hackerboard");
+      navigator(routes.App.hackerboard);
     } else if (event.target.textContent == "Login") {
-      navigator("/authentication/login");
+      navigator(routes.Authentication.login);
     } else if (event.target.textContent == "Register") {
-      navigator("/authentication/register");
+      navigator(routes.Authentication.register);
     } else if (event.target.textContent == "Logout") {
-      navigator("/authentication/logout");
+      setAuth(false);
+      setAuthenticated(false);
     } else if (event.target.textContent == "Challenges") {
-      navigator("/app/quest");
+      navigator(routes.App.quests);
     }
   }
 
@@ -90,9 +95,7 @@ function HeaderNav() {
       return true;
     } else if (name == "Register" && location.pathname.endsWith("register")) {
       return true;
-    } else if (name == "About" && location.pathname.endsWith("about")) {
-      return true;
-    } else if (name == "Challenges" && location.pathname.endsWith("quest")) {
+    }  else if (name == "Challenges" && location.pathname.endsWith("quest")) {
       return true;
     }
     return false;
@@ -116,7 +119,7 @@ function HeaderNav() {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav">
                 <a
-                  onClick={() => navigator("/information/about")}
+                  onClick={() => navigator(routes.Information.about)}
                   className="pl-md-0 p-3 text-decoration-none text-light"
                 >
                   <h3 className="bold">
@@ -127,7 +130,7 @@ function HeaderNav() {
               </div>
               <div className="navbar-nav ml-auto">
                 <a
-                  onClick={(e) => navigate(e)}
+                onClick={(e) => navigate(e)}
                   className={
                     NavLocation("Home")
                       ? "p-3 text-decoration-none text-white bold"
@@ -140,9 +143,9 @@ function HeaderNav() {
                   className="p-3 text-decoration-none text-white bold navbar-dark"
                 >
                   <DropdownButton variant="dark" id="dropdown-item-button" title="Dropdown button">
-                    <Dropdown.Item onClick={() => navigator("/information/about")} className="text-white" as="button">About</Dropdown.Item>
-                    <Dropdown.Item onClick={() => navigator("/information/feedback")} className="text-white" as="button">Feedback</Dropdown.Item>
-                    <Dropdown.Item onClick={() => navigator("/information/instruction")} className="text-white" as="button">Instructions</Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigator(routes.Information.about)} className="text-white" as="button">About</Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigator(routes.Information.feedback)} className="text-white" as="button">Feedback</Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigator(routes.Information.instruction)} className="text-white" as="button">Instructions</Dropdown.Item>
                   </DropdownButton>
                 </a>
                 <a
