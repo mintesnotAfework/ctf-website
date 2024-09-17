@@ -28,14 +28,42 @@ export const hackerRank = () => {
     return data;
 }
 
-
-export const machine = (id) => {
-     const data = {
-        name : "Green Hole",
+const data = {
+    1 : {
+        name : "Headache",
+        ip : "192.9.2.3",
+        point : "128",
+        solved : "32",
+        diffculty : 7
+    },
+    2 : {
+        name : "GreenHole",
         ip : "10.0.0.1",
         point : "10",
-        solved : "90",
+        solved : "34",
         diffculty : 8
-     }
-     return data;
+    }, 
+    3 : {
+        name : "HenokDemo",
+        ip : "23.12.22.11",
+        point : "100",
+        solved : "5",
+        diffculty : 10
+    },
+    4 : {
+        name : "HeadAche",
+        ip : "10.9.21.93",
+        point : "500",
+        solved : "10",
+        diffculty : 3
+    }
+}
+
+export const machine = (id) => {
+     return data[id];
+}
+
+
+export const machines = () => {
+    return data;
 }

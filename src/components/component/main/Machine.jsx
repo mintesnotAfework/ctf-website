@@ -3,6 +3,7 @@ import { useState } from "react"
 import {machine} from '../../../api/app'
 import { useParams } from "react-router-dom";
 // import { machine1 } from "../../../js/machine";
+import { difficulty } from "../../../js/setting";
 
 function Machine(){
     const {id} = useParams()
@@ -21,30 +22,13 @@ function Machine(){
         return false
     }
 
-    function difficulty(number){
-        if(number >= 9){
-            return "insane"
-        }
-        else if(number >= 7){
-            return "hard"
-        }
-        else if(number >= 5){
-            return "middle"
-        }
-        else if(number >= 3){
-            return "easy"
-        }
-        else{
-            return "very easy"
-        }
-    }
     return(
         <>
             <div class="jumbotron bg-transparent mb-0 pt-0 radius-0">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12  text-center">
-                            <h1 class="display-1 bold color_white content__title">{check()?data.name:""}<span class="vim-caret">&nbsp;</span></h1>
+                            <h1 class="display-1 bold color_white content__title">{check()?data.name.toUpperCase():""}<span class="vim-caret">&nbsp;</span></h1>
                             <p class="text-grey text-spacey hackerFont lead mb-5">
                                 Some random info about the machine if any. Some random info about the machine if any.
                             </p>
@@ -74,7 +58,7 @@ function Machine(){
                             <div class="col-md-12">
                                 <div class="card border-primary mb-3 text-center">
                                     <div class="card-body machine_page justify-content-center" style={{display: "inline-flex"}}>
-                                        <h6 class="solvers">Solvers: <span class="solver_num">{check()?data.solved:""}</span> &nbsp;<span class="color_danger">Difficulty: {check()?difficulty(data.difficulty):""}</span></h6>
+                                        <h6 class="solvers">Solvers: <span class="solver_num">{check()?data.solved:""}</span> &nbsp;<span class="color_danger">Difficulty: {check()?difficulty(data.diffculty):""}</span></h6>
                                         <div class="pl-2"><canvas style={{width:"80px;",height:"15px"}} id="machine_id_1_chart"></canvas></div>
                                     </div>
                                 </div>

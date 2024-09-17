@@ -20,8 +20,8 @@ function App() {
           <Route path="/">
             <Route index element={<CompiledIndex />} />
             <Route path="app">
-              <Route path="list" element={<CompiledApp />} />
-              <Route path="form" element={<CompiledForm />} />
+              {/* <Route path="list" element={<CompiledApp />} /> */}
+              {/* <Route path="form" element={<CompiledForm />} /> */}
               <Route path="machine/:id" element={<CompiledMachine />} />
               <Route path="quest" element={<CompiledQuest />} />
               <Route path="hackerboard" element={<CompiledHackerBoard />} />

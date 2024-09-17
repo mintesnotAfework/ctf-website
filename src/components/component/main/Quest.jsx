@@ -1,4 +1,26 @@
+import { useEffect } from "react";
+import { useState } from "react"
+import { machines } from "../../../api/app";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../../js/setting";
+import { difficulty } from "../../../js/setting";
+
+
 function Quest(){
+    const [data,setData] = useState(null);
+    const navigator = useNavigate();
+
+    useEffect(() => {
+        setData(machines());
+    },[]);
+
+    function check(){
+        if(data !== null){
+            return true;
+        }
+        return false;
+    }
+
     return(
         <>
             <div className="container">
@@ -302,46 +324,30 @@ function Quest(){
                     <div className="col-md-12">
                         <h4>Machines</h4>
                     </div>
-                    <div className="col-md-12 mb-3">
-                        <div className="card category_machine">
-                            <a href="machine.html" className="color_white">
-                                <div className="card-header">
-                                    Headache <span className=" ml-4 badge align-self-end">1000 points</span>
-                                    <div className="pl-4 machine" style={{display: "inline-flex"}}>
-                                        10.10.15.117
-                                        <h6 className=" pl-4 pt-1 solvers">Solvers: <span className="solver_num">76</span> &nbsp;<span className="color_danger">Difficulty:</span></h6>
-                                        <div className="pl-2"><canvas style={{width:"80px",height:"20px"}} id="problem_id_7_chart"></canvas></div>
+                    {
+                        check()?Object.keys(data).map((key) => {
+                            return(
+                                <div key={key} className="col-md-12 mb-3">
+                                    <div className="card category_machine">
+                                        <a onClick={()=> navigator(routes.App.machine + key)} href="#" className="color_white">
+                                            <div className="card-header">
+                                                {data[key].name} <span className=" ml-4 badge align-self-end">{data[key].point} points</span>
+                                                <div className="pl-4 machine" style={{display: "inline-flex"}}>
+                                                    {data[key].ip}
+                                                    <h6 className=" pl-4 pt-1 solvers">Solvers: <span className="solver_num">7{data[key].solved}</span> &nbsp;<span className="color_danger">Difficulty:  {difficulty(data[key].diffculty)}</span></h6>
+                                                    <div className="pl-2"><canvas style={{width:"80px",height:"20px"}} id="problem_id_7_chart"></canvas></div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="col-md-12 mb-3">
-                        <div className="card category_machine">
-                            <a href="machine.html" className="color_white">
-                                <div className="card-header">
-                                    CORONA <span className=" ml-4 badge align-self-end">1000 points</span>
-                                    <div className="pl-4 machine" style={{display: "inline-flex"}}>
-                                        10.10.15.112
-                                        <h6 className=" pl-4 pt-1 solvers">Solvers: <span className="solver_num">76</span> &nbsp;<span className="color_danger">Difficulty:</span></h6>
-                                        <div className="pl-2"><canvas style={{width:"80px",height:"20px"}} id="problem_id_8_chart"></canvas></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                            )
+                        }):""
+                    }
                 </div>
                 <div className="row hackerFont justify-content-center mt-5">
                     <div className="col-md-12">
-                        Chart Difficulties:
-                        <span style={{color:"#17b06b"}}>Very Easy,</span>
-                        <span style={{color:"#17b06b"}}>Easy,</span>
-                        <span style={{color:"#ffce56"}}>Medium,</span>
-                        <span style={{color:"#ef121b"}}>Hard,</span>
-                        <span style={{color:"#ef121b"}}>Very Hard,</span>
-                        <br/
-                        ><br/
-                        >Challenge Types:
+                       Challenge Types:
                         <span className="p-1" style={{backgroundColor: "#ef121b94"}}>Web</span>
                         <span className="p-1" style={{backgroundColor: "#17b06b94"}}>Reversing</span>
                         <span className="p-1" style={{backgroundColor: "#f9751594"}}>Steganography</span>
@@ -360,6 +366,7 @@ function Quest(){
                     </div>
                 </div>
             </div>
+            <br/><br/>
         </>
     )
 }
