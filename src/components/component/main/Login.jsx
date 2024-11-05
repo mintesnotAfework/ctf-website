@@ -39,7 +39,7 @@ function Login() {
           <div className="row">
             <div className="col-xl-8">
               <h1 className="display-1 bold color_white content__title">
-                LAKSHYA CTF<span className="vim-caret">&nbsp;</span>
+                FEMS CTF<span className="vim-caret">&nbsp;</span>
               </h1>
               <p className="text-grey text-spacey hackerFont lead mb-5">
                 Type your credentials to conquer the world

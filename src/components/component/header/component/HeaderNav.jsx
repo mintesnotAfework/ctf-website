@@ -123,7 +123,7 @@ function HeaderNav() {
                   className="pl-md-0 p-3 text-decoration-none text-light"
                 >
                   <h3 className="bold">
-                    <span className="color_danger">LAKSHYA</span>
+                    <span className="color_danger">FEMS</span>
                     <span className="color_white">CTF</span>
                   </h3>
                 </a>

@@ -9,8 +9,8 @@ function Index(){
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-8">
-                            <h1 className="display-1 bold color_white content__title">LAKSHYA CTF<span className="vim-caret">&nbsp;</span></h1>
-                            <h1 className="display-1 bold color_white content__title2">INC 2020</h1>
+                            <h1 className="display-1 bold color_white content__title">FEMS CTF<span className="vim-caret">&nbsp;</span></h1>
+                            <h1 className="display-1 bold color_white content__title2">INC 2024</h1>
                         </div>
                     </div>
                     <div className="row">
