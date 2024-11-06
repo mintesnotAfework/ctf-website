@@ -6,12 +6,12 @@ export const about = () =>{
             answer : "A capture the flag (CTF) contest is a special kind of cybersecurity competition designed to challenge its participants to solve computer security problems and/or capture and defend computer systems. The game consists of a series of challenges where participantsmust reverse engineer, break, hack, decrypt, or do whatever it takes to solve the challenge. The challenges are all set up with the intent of being hacked, making it an excellent, legal way to get hands-on experience."
         },
         body2 : {
-            question : "About Lakshya CTF",
-            answer : "Lakshya CTF is a sub event of PICT's Impetus and Concepts mega event where students partcipate from all over the world! Out aim is about spreading the importance of cybersecurity in today's community. Each and every person should be aware of different vulnerabilities in systems as well as how to protect onselves agains cyber attacks We believe gamification is the best technique to teach oneself about cybersecurity."
+            question : "About FEMS CTF",
+            answer : "FEMS CTF is a sub event of PICT's Impetus and Concepts mega event where students partcipate from all over the world! Out aim is about spreading the importance of cybersecurity in today's community. Each and every person should be aware of different vulnerabilities in systems as well as how to protect onselves agains cyber attacks We believe gamification is the best technique to teach oneself about cybersecurity."
         },
         body3 : {
             question : "Who can play Lakshya CTF",
-            answer : "Lakshya CTF is mainly focused at students who are undergraduates."
+            answer : "FEMS CTF is mainly focused at students who are undergraduates."
         }
     };
     return data;
